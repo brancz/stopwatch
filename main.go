@@ -9,6 +9,13 @@ import (
 )
 
 func main() {
+	if len(os.Args) <= 1 {
+		return
+	}
+	execute_command()
+}
+
+func execute_command() {
 	command := os.Args[1]
 	args := os.Args[2:]
 	cmd := exec.Command(command, args...)
