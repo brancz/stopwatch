@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"strings"
 	"time"
 )
 
@@ -23,5 +24,5 @@ func main() {
 	}
 
 	total_time := int64(time.Since(start_time) / time.Millisecond)
-	fmt.Println(total_time)
+	fmt.Printf("\nran `%v` in %vms\n", strings.Join(os.Args, " "), total_time)
 }
