@@ -36,5 +36,5 @@ func execute_command() {
 	}
 
 	total_time := int64(time.Since(start_time) / time.Millisecond)
-	fmt.Printf("\nran `%v` in %vms\n", strings.Join(os.Args, " "), total_time)
+	fmt.Printf("\nran `%v` in %vms\n", strings.Join(os.Args[1:], " "), total_time)
 }
