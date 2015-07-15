@@ -11,6 +11,7 @@ import (
 
 func main() {
 	if len(os.Args) <= 1 {
+		printHelp()
 		return
 	}
 	execute_command()
@@ -37,4 +38,9 @@ func execute_command() {
 
 	total_time := int64(time.Since(start_time) / time.Millisecond)
 	fmt.Printf("\nran `%v` in %vms\n", strings.Join(os.Args[1:], " "), total_time)
+}
+
+func printHelp() {
+	fmt.Println("Stop the time a program takes to execute.\n")
+	fmt.Println("usage: stopwatch [COMMAND] [ARGS...]")
 }
