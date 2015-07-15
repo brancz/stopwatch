@@ -5,6 +5,7 @@ import (
 	"os"
 	"os/exec"
 	"strings"
+	"syscall"
 	"time"
 )
 
@@ -26,7 +27,11 @@ func execute_command() {
 
 	err := cmd.Run()
 	if err != nil {
-		println(err.Error())
+		fmt.Println(err.Error())
+		if exitError, ok := err.(*exec.ExitError); ok {
+			waitStatus := exitError.Sys().(syscall.WaitStatus)
+			os.Exit(waitStatus.ExitStatus())
+		}
 		return
 	}
 
